@@ -6,6 +6,7 @@ import MappedVideos from "./components/mapped-videos";
 import MappedProps from "./components/mapped-props";
 import Masonry from "react-masonry-css";
 import Gallery from "./components/gallery";
+import MappedTracklist from "./components/mapped-tracklist";
 
 interface Props {
   params: {
@@ -30,9 +31,11 @@ const Page: NextPage<Props> = async ({ params }) => {
     <main className="h-full min-h-screen bg-slate-900 pt-[64px] px-[10%]">
       <section id="hero" className="relative min-h-screen w-full flex justify-between mt-16">
         <div className="flex-[0_1_50%]">
-          <h1 className="h1">{record?.title}</h1>
+          <h1 className="h1 mb-2">{record?.title}</h1>
           <h2 className="h3 mb-7 pb-7 border-b border-sky-800 border-solid">{formattedArtists || "Author Unknown"}</h2>
           <MappedProps params={vinylProps} />
+          <h3 className="h4 my-7 pt-7 border-t border-sky-800 border-solid">Track list:</h3>
+          <MappedTracklist tracklist={record?.tracklist} />
           <h3 className="h4 my-7 pt-7 border-t border-sky-800 border-solid">Gallery:</h3>
           <Gallery images={record?.images} />
         </div>

@@ -8,6 +8,8 @@
 }
 
 .record {
+  flex: 0 0 auto;
+
   width: var(--record-diameter);
   height: var(--record-diameter);
   border-radius: 50%;
@@ -46,6 +48,8 @@
 }
 
 .record-small {
+  flex: 0 0 auto;
+
   width: var(--small-diameter);
   height: var(--small-diameter);
   border-radius: 50%;
