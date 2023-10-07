@@ -2023,6 +2023,11 @@ react-is@^16.13.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-masonry-css@^1.0.16:
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/react-masonry-css/-/react-masonry-css-1.0.16.tgz#72b28b4ae3484e250534700860597553a10f1a2c"
+  integrity sha512-KSW0hR2VQmltt/qAa3eXOctQDyOu7+ZBevtKgpNDSzT7k5LA/0XntNa9z9HKCdz3QlxmJHglTZ18e4sX4V8zZQ==
+
 react-player@^2.13.0:
   version "2.13.0"
   resolved "https://registry.yarnpkg.com/react-player/-/react-player-2.13.0.tgz#b6fb252bf70574608ac711f6c83d7057c8fb0c14"
@@ -2033,6 +2038,11 @@ react-player@^2.13.0:
     memoize-one "^5.1.1"
     prop-types "^15.7.2"
     react-fast-compare "^3.0.1"
+
+react-responsive-masonry@^2.1.7:
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/react-responsive-masonry/-/react-responsive-masonry-2.1.7.tgz#9b4a8d63b296a6265bea720c9d7da89754548346"
+  integrity sha512-/jOqnTVNtO8zRJMTl6ZXBex7EFYEIFBLVlkIFjiCT7omfm0CgNF2z4ST8RIr0v2ut15NWAQs7Q3kJJPhMoe3Ew==
 
 react@^18:
   version "18.2.0"

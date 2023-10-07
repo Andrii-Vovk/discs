@@ -4,6 +4,8 @@ import Image from "next/image";
 import RecordPlayer from "./components/record-player";
 import MappedVideos from "./components/mapped-videos";
 import MappedProps from "./components/mapped-props";
+import Masonry from "react-masonry-css";
+import Gallery from "./components/gallery";
 
 interface Props {
   params: {
@@ -31,6 +33,8 @@ const Page: NextPage<Props> = async ({ params }) => {
           <h1 className="h1">{record?.title}</h1>
           <h2 className="h3 mb-7 pb-7 border-b border-sky-800 border-solid">{formattedArtists || "Author Unknown"}</h2>
           <MappedProps params={vinylProps} />
+          <h3 className="h4 my-7 pt-7 border-t border-sky-800 border-solid">Gallery:</h3>
+          <Gallery images={record?.images} />
         </div>
         <div className="flex flex-col gap-6 self-baseline sticky top-20">
           <RecordPlayer imageSrc={primaryImage?.uri || ""} recordTitle={video?.title || ""} video={video?.uri || ""} />

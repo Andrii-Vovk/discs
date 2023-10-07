@@ -2,6 +2,7 @@ import { Toaster } from "sonner";
 import "./globals.css";
 import "./typography.scss";
 import "./record.scss";
+import "./masonry.scss";
 import type { Metadata } from "next";
 import Header from "@/components/header/header";
 import ClientBoot from "./client-boot";
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className='bg-slate-900'>
       <Toaster richColors theme="dark" position="top-right" />
       <ClientBoot>
         <body>
