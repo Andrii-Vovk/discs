@@ -1,7 +1,12 @@
+:root {
+  --record-diameter: 340px;
+  --inside-diameter: 90px;
+  --inside-dot: 10px;
+}
+
 .record {
-  position: relative;
-  width: 300px;
-  height: 300px;
+  width: var(--record-diameter);
+  height: var(--record-diameter);
   border-radius: 50%;
   background: linear-gradient(30deg, transparent 40%, rgba(42, 41, 40, 0.85) 40%) no-repeat 100% 0,
     linear-gradient(60deg, rgba(42, 41, 40, 0.85) 60%, transparent 60%) no-repeat 0 100%,
@@ -14,12 +19,25 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  margin: -35px;
+  transform: translate(-50%, -50%);
   border: solid 1px #d9a388;
-  width: 68px;
-  height: 68px;
+  width: var(--inside-diameter);
+  height: var(--inside-diameter);
   border-radius: 50%;
   box-shadow: 0 0 0 4px #da5b33, inset 0 0 0 27px #da5b33;
-  background: #b5ac9a;
+  background: #5a5a5a;
+  content: "";
+}
+
+.record:before {
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--inside-dot);
+  height: var(--inside-dot);
+  border-radius: 50%;
+  background: #1e1d1d;
   content: "";
 }
