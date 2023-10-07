@@ -5,7 +5,7 @@ const BASE_API = "https://api.discogs.com";
 
 const apiRoutes = {
   search: (query?: string, page: number = 1) =>
-    `${BASE_API}/database/search?${query ? `q=${query}&` : ""}type=release&format=vinyl&per_page=50&page=${page}`,
+    `${BASE_API}/database/search?${query ? `q=${query}&` : ""}type=release&format=vinyl&per_page=100&page=${page}`,
 };
 
 const handleError = (err: any) => {

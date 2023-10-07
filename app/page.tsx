@@ -24,7 +24,7 @@ const Home: NextPage<Props> = async ({ searchParams }) => {
   ));
 
   return (
-    <main className="flex min-h-screen flex-col">
+    <main className="flex min-h-screen flex-col pt-[64px]">
       <h1>Discs</h1>
       <DebouncedInput />
       <div className="flex flex-col">{mappedRecords}</div>

@@ -6,9 +6,7 @@
   text-decoration: none;
   transition: color 0.2s ease-in-out;
 
-  &:hover {
-    color: darken(white, 10%);
-  }
+  @apply hover:text-sky-500;
 }
 
 .header-link-main {
@@ -19,7 +17,53 @@
   text-decoration: none;
   transition: color 0.2s ease-in-out;
 
-  &:hover {
-    color: darken(white, 10%);
-  }
+  @apply hover:text-sky-500;
+}
+
+.h1 {
+  color: white;
+  font-family: "Oswald", sans-serif;
+  font-size: 4.625rem;
+  font-weight: bold;
+  line-height: 4.75rem;
+}
+
+.h2 {
+  color: white;
+  font-family: "Oswald", sans-serif;
+  font-size: 3.25rem;
+  font-weight: bold;
+  line-height: 3.375rem;
+}
+
+.h3 {
+  color: white;
+  font-family: "Oswald", sans-serif;
+  font-size: 2.75rem;
+  font-weight: bold;
+  line-height: 2.875rem;
+}
+
+.h4 {
+  color: white;
+  font-family: "Oswald", sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 38px;
+}
+
+.h5 {
+  color: white;
+  font-family: "Oswald", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 28px;
+}
+
+.subtitle {
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 100;
+  line-height: 1.625rem;
 }

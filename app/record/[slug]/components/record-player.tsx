@@ -3,15 +3,21 @@
 import Image from "next/image";
 import { animated, useSpring } from "@react-spring/web";
 import { toast } from "sonner";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CurrentSongContext } from "@/components/current-song-context";
+import { twMerge } from "tailwind-merge";
+import { title } from "process";
 
 interface Props {
   imageSrc: string;
   recordTitle: string;
+  video: string;
 }
 
-const RecordPlayer: React.FC<Props> = ({ imageSrc, recordTitle }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+const RecordPlayer: React.FC<Props> = ({ imageSrc, recordTitle, video }) => {
+  const { setSong, setIsPlaying, isPlaying: isVideoPlaying, title: videoTitle } = useContext(CurrentSongContext);
+
+  const [isPlaying, setIsCurrPlaying] = useState(isVideoPlaying && videoTitle === recordTitle);
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const [spring, api] = useSpring(() => ({
@@ -54,6 +60,12 @@ const RecordPlayer: React.FC<Props> = ({ imageSrc, recordTitle }) => {
   };
 
   const handleButtonClick = () => {
+    if (!video) {
+      toast.error("No video found for this record");
+
+      return;
+    }
+
     setButtonDisabled(true);
     api.start({
       to: [
@@ -78,8 +90,16 @@ const RecordPlayer: React.FC<Props> = ({ imageSrc, recordTitle }) => {
         },
       ],
       onRest: () => {
-        setIsPlaying(!isPlaying);
+        const isNowPlaying = isPlaying;
+
+        setIsCurrPlaying(!isNowPlaying);
         setButtonDisabled(false);
+
+        if (!isNowPlaying) {
+          setSong(video, recordTitle);
+        }
+
+        setIsPlaying(!isNowPlaying);
       },
     });
   };
@@ -94,10 +114,21 @@ const RecordPlayer: React.FC<Props> = ({ imageSrc, recordTitle }) => {
         onMouseLeave={!isPlaying ? handleMouseLeave : undefined}
       >
         <animated.div className="relative w-[380px] h-[380px] mx-auto z-[2]" style={spring}>
-          <Image className="object-cover rounded" fill src={imageSrc} alt={recordTitle} />
+          {imageSrc ? (
+            <Image className="object-cover rounded" fill src={imageSrc} alt={recordTitle} />
+          ) : (
+            <div
+              className={twMerge(
+                "w-full h-full rounded bg-slate-600 flex items-center",
+                "justify-center flex-col text-white font-poppins text-lg"
+              )}
+            >
+              No <br /> Cover <br /> Available
+            </div>
+          )}
         </animated.div>
         <div className="absolute z-[1] top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2">
-          <animated.div className="record" style={recordSpring} />
+          <animated.div className={twMerge("record z-[1]", isPlaying && "spin-45-rpm z-[2]")} style={recordSpring} />
         </div>
       </button>
     </div>

@@ -5,7 +5,20 @@
 @tailwind utilities;
 
 .whitewash {
-   filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+
+.spin-45-rpm {
+  animation: spin 1.3s linear infinite;
 }
 
 * {

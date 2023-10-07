@@ -3,7 +3,8 @@ import "./globals.css";
 import "./typography.scss";
 import "./record.scss";
 import type { Metadata } from "next";
-import Header from "@/components/header";
+import Header from "@/components/header/header";
+import ClientBoot from "./client-boot";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,11 +15,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <Toaster richColors theme="dark" position="top-right" />
-
-      <body>
-        <Header />
-        {children}
-      </body>
+      <ClientBoot>
+        <body>
+          <Header />
+          {children}
+        </body>
+      </ClientBoot>
     </html>
   );
 }
