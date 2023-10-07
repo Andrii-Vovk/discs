@@ -2,6 +2,9 @@
   --record-diameter: 340px;
   --inside-diameter: 90px;
   --inside-dot: 10px;
+
+  --small-diameter: 32px;
+  --small-inside-diameter: 7px;
 }
 
 .record {
@@ -39,5 +42,30 @@
   height: var(--inside-dot);
   border-radius: 50%;
   background: #1e1d1d;
+  content: "";
+}
+
+.record-small {
+  width: var(--small-diameter);
+  height: var(--small-diameter);
+  border-radius: 50%;
+  background: linear-gradient(30deg, transparent 40%, rgba(42, 41, 40, 0.85) 40%) no-repeat 100% 0,
+    linear-gradient(60deg, rgba(42, 41, 40, 0.85) 60%, transparent 60%) no-repeat 0 100%,
+    repeating-radial-gradient(#2a2928, #2a2928 4px, #ada9a0 5px, #2a2928 6px);
+  background-size: 50% 100%, 100% 50%, 100% 100%;
+}
+
+.record-small:after {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: solid 1px #d9a388;
+  width: var(--small-inside-diameter);
+  height: var(--small-inside-diameter);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #da5b33, inset 0 0 0 27px #da5b33;
+  background: #5a5a5a;
   content: "";
 }

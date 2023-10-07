@@ -1,0 +1,25 @@
+.header-link {
+  @apply font-oswald;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: darken(white, 10%);
+  }
+}
+
+.header-link-main {
+  @apply font-oswald;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: darken(white, 10%);
+  }
+}

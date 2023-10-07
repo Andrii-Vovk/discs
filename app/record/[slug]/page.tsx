@@ -15,7 +15,7 @@ const Page: NextPage<Props> = async ({ params }) => {
   const primaryImage = record?.images.find((image) => image.type === "primary") || record?.images[0];
 
   return (
-    <main className="h-full min-h-screen bg-slate-900">
+    <main className="h-full min-h-screen bg-slate-900 pt-[64px]">
       <section id="hero" className="min-h-screen w-full">
         <RecordPlayer imageSrc={primaryImage?.uri || ""} recordTitle={record?.title || ""} />
       </section>

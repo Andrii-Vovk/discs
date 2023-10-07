@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.whitewash {
+   filter: brightness(0) invert(1);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
