@@ -4,6 +4,7 @@ import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 import { usePathname, useSearchParams } from "next/navigation";
 import debounce from "lodash/debounce";
+import { twMerge } from "tailwind-merge";
 
 const DebouncedInput = () => {
   const router = useRouter();
@@ -25,7 +26,19 @@ const DebouncedInput = () => {
     handleSearch(value);
   };
 
-  return <input type="text" placeholder="Search" value={searchTerm} onChange={handleChange} />;
+  return (
+    <input
+      type="text"
+      placeholder="Search"
+      value={searchTerm}
+      className={twMerge(
+        "rounded font-oswald bg-transparent outline-none border-sky-800 !active:border-sky-500",
+        "border-solid border-2 duration-200",
+        "px-3 py-4 text-white"
+      )}
+      onChange={handleChange}
+    />
+  );
 };
 
 export default DebouncedInput;

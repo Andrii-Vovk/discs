@@ -105,7 +105,7 @@ const RecordPlayer: React.FC<Props> = ({ imageSrc, recordTitle, video }) => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative rotate-3d">
       <button
         className="relative block w-[380px] h-[380px] mx-auto"
         onClick={handleButtonClick}

@@ -17,17 +17,17 @@ const Home: NextPage<Props> = async ({ searchParams }) => {
     <Link
       key={disc.id}
       href={routes.record(disc.id)}
-      className="border-b border-gray-200 p-2 border-solid hover:bg-gray-100"
+      className="text-white border-b border-sky-200 p-2 border-solid hover:bg-sky-950"
     >
       {disc.title}
     </Link>
   ));
 
   return (
-    <main className="flex min-h-screen flex-col pt-[64px]">
-      <h1>Discs</h1>
+    <main className="flex min-h-screen flex-col pt-[64px] px-[10%]">
+      <h1 className="h1 mt-4 mb-4">Discs</h1>
       <DebouncedInput />
-      <div className="flex flex-col">{mappedRecords}</div>
+      <div className="flex flex-col mt-4">{mappedRecords}</div>
     </main>
   );
 };
