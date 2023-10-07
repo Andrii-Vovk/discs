@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { animated, useSpring } from "@react-spring/web";
 import { toast } from "sonner";
+import { useState } from "react";
 
 interface Props {
   imageSrc: string;
@@ -10,9 +11,12 @@ interface Props {
 }
 
 const RecordPlayer: React.FC<Props> = ({ imageSrc, recordTitle }) => {
-  // move record right, and the image left on hover
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+
   const [spring, api] = useSpring(() => ({
     x: 0,
+    zIndex: 2,
     config: {
       mass: 1,
       tension: 100,
@@ -22,6 +26,8 @@ const RecordPlayer: React.FC<Props> = ({ imageSrc, recordTitle }) => {
 
   const [recordSpring, recordApi] = useSpring(() => ({
     x: 0,
+    rotate: 0,
+    zIndex: 1,
     config: {
       mass: 1,
       tension: 100,
@@ -47,26 +53,53 @@ const RecordPlayer: React.FC<Props> = ({ imageSrc, recordTitle }) => {
     });
   };
 
+  const handleButtonClick = () => {
+    setButtonDisabled(true);
+    api.start({
+      to: [
+        {
+          x: -200,
+          zIndex: isPlaying ? 2 : 1,
+        },
+        {
+          x: 0,
+        },
+      ],
+    });
+
+    recordApi.start({
+      to: [
+        {
+          x: 200,
+          zIndex: isPlaying ? 1 : 2,
+        },
+        {
+          x: 0,
+        },
+      ],
+      onRest: () => {
+        setIsPlaying(!isPlaying);
+        setButtonDisabled(false);
+      },
+    });
+  };
+
   return (
     <div className="relative">
-      <div className="relative w-[380px] h-[380px] mx-auto">
-        <animated.div
-          className="relative w-[380px] h-[380px] mx-auto z-20"
-          onMouseEnter={handleHover}
-          onMouseLeave={handleMouseLeave}
-          style={spring}
-        >
+      <button
+        className="relative block w-[380px] h-[380px] mx-auto"
+        onClick={handleButtonClick}
+        disabled={buttonDisabled}
+        onMouseEnter={!isPlaying ? handleHover : undefined}
+        onMouseLeave={!isPlaying ? handleMouseLeave : undefined}
+      >
+        <animated.div className="relative w-[380px] h-[380px] mx-auto z-[2]" style={spring}>
           <Image className="object-cover rounded" fill src={imageSrc} alt={recordTitle} />
         </animated.div>
-        <div className="absolute z-10 top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2">
-          <animated.div
-            className="record"
-            onMouseEnter={handleHover}
-            onMouseLeave={handleMouseLeave}
-            style={recordSpring}
-          />
+        <div className="absolute z-[1] top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2">
+          <animated.div className="record" style={recordSpring} />
         </div>
-      </div>
+      </button>
     </div>
   );
 };
