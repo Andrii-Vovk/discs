@@ -8,9 +8,10 @@ import { twMerge } from "tailwind-merge";
 
 interface Props {
   videos: DiscogsVideo[];
+  id: string;
 }
 
-const MappedVideos: React.FC<Props> = ({ videos }) => {
+const MappedVideos: React.FC<Props> = ({ videos, id }) => {
   const { setSong, setIsPlaying, isPlaying, title } = useContext(CurrentSongContext);
 
   const mappedVideos = videos.map((video) => (
@@ -27,7 +28,7 @@ const MappedVideos: React.FC<Props> = ({ videos }) => {
 
           return;
         }
-        setSong(video.uri, video.title);
+        setSong(video.uri, video.title, id);
         setIsPlaying(true);
       }}
     >
@@ -36,9 +37,12 @@ const MappedVideos: React.FC<Props> = ({ videos }) => {
     </button>
   ));
 
-  return <div className="relative flex flex-col">
-    <div className='h4'>Samples:</div>
-    {mappedVideos}</div>;
+  return (
+    <div className="relative flex flex-col">
+      <div className="h4">Samples:</div>
+      {mappedVideos}
+    </div>
+  );
 };
 
 export default MappedVideos;

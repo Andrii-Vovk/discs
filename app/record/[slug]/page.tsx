@@ -28,7 +28,7 @@ const Page: NextPage<Props> = async ({ params }) => {
   const vinylProps = { ...record, ...(record?.formats?.[0] && { vinyl_info: record?.formats?.[0].descriptions }) };
 
   return (
-    <main className="h-full min-h-screen bg-slate-900 pt-[64px] px-[10%]">
+    <main className="h-full min-h-screen bg-slate-900 pb-12 pt-[64px] px-[10%]">
       <section id="hero" className="relative min-h-screen w-full flex justify-between mt-16">
         <div className="flex-[0_1_50%]">
           <h1 className="h1 mb-2">{record?.title}</h1>
@@ -40,8 +40,13 @@ const Page: NextPage<Props> = async ({ params }) => {
           <Gallery images={record?.images} />
         </div>
         <div className="flex flex-col gap-6 self-baseline sticky top-20">
-          <RecordPlayer imageSrc={primaryImage?.uri || ""} recordTitle={video?.title || ""} video={video?.uri || ""} />
-          <MappedVideos videos={record?.videos || []} />
+          <RecordPlayer
+            imageSrc={primaryImage?.uri || ""}
+            recordTitle={video?.title || ""}
+            id={record?.id?.toString() || ""}
+            video={video?.uri || ""}
+          />
+          <MappedVideos videos={record?.videos || []} id={record?.id?.toString() || ""} />
         </div>
       </section>
     </main>

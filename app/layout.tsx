@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className='bg-slate-900'>
-      <Toaster richColors theme="dark" position="top-right" />
+      <Toaster richColors theme="light" position="top-center" />
       <ClientBoot>
         <body>
           <Header />

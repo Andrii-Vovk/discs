@@ -9,7 +9,7 @@ import { CurrentSongContext } from "../current-song-context";
 import { twMerge } from "tailwind-merge";
 
 const Header = () => {
-  const { title, isPlaying, setIsPlaying } = useContext(CurrentSongContext);
+  const { title, isPlaying, setIsPlaying, recordId } = useContext(CurrentSongContext);
 
   const onPlayClick = () => {
     if (!title) return;
@@ -54,7 +54,9 @@ const Header = () => {
       <div className="flex items-center gap-3">
         {title && (
           <div className="flex items-center gap-3">
-            <span className="header-link">{title}</span>
+            <Link href={routes.record(recordId)} className="header-link">
+              {title}
+            </Link>
             <button
               onClick={onPlayClick}
               className={twMerge("record-small relative hover:scale-[1.1] duration-200", isPlaying && "animate-spin")}

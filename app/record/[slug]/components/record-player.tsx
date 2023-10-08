@@ -12,9 +12,10 @@ interface Props {
   imageSrc: string;
   recordTitle: string;
   video: string;
+  id: string;
 }
 
-const RecordPlayer: React.FC<Props> = ({ imageSrc, recordTitle, video }) => {
+const RecordPlayer: React.FC<Props> = ({ imageSrc, recordTitle, video, id }) => {
   const { setSong, setIsPlaying, isPlaying: isVideoPlaying, title: videoTitle } = useContext(CurrentSongContext);
 
   const [isPlaying, setIsCurrPlaying] = useState(isVideoPlaying && videoTitle === recordTitle);
@@ -96,7 +97,7 @@ const RecordPlayer: React.FC<Props> = ({ imageSrc, recordTitle, video }) => {
         setButtonDisabled(false);
 
         if (!isNowPlaying) {
-          setSong(video, recordTitle);
+          setSong(video, recordTitle, id);
         }
 
         setIsPlaying(!isNowPlaying);
